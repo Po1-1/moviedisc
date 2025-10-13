@@ -19,4 +19,4 @@ Route::get('/categories', [MovieController::class, 'categories'])->name('movies.
 Route::get('/category/{category}', [MovieController::class, 'showByCategory'])->name('movies.by_category');
 
 // Rute untuk halaman 'About Us'
-Route::get('/about', [MovieController::class, 'about'])->name('pages.about');
+Route::get('/about', [MovieController::class, 'about'])->name('pages');

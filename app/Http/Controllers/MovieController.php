@@ -41,6 +41,6 @@ class MovieController extends Controller
     // View 5: Halaman About (Contoh halaman statis)
     public function about()
     {
-        return view('pages.about');
+        return view('pages');
     }
 }
