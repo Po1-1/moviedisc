@@ -16,14 +16,14 @@ class MovieFactory extends Factory
      */
     public function definition(): array
     {
-        $randomImageUrl = 'https://picsum.photos/400/600?random=' . $this->faker->unique()->randomNumber();
-        
+         $imageUrl = 'https://picsum.photos/seed/' . $this->faker->unique()->word . '/400/600';
+
         return [
             'movie_category_id' => MovieCategory::factory(),
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(4),
             'release_date' => $this->faker->date(),
-            'poster_url' => $randomImageUrl, // Placeholder image
+            'poster_url' => $imageUrl, // Gunakan URL baru yang konsisten
             'price' => $this->faker->randomFloat(2, 5, 25),
         ];
     }
