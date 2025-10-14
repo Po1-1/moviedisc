@@ -23,7 +23,7 @@ class MovieFactory extends Factory
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(4),
             'release_date' => $this->faker->date(),
-            'poster_url' => $imageUrl, // Gunakan URL baru yang konsisten
+            'poster_url' => $imageUrl, 
             'price' => $this->faker->randomFloat(2, 5, 25),
         ];
     }

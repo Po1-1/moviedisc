@@ -9,6 +9,16 @@ class Movie extends Model
 {
     use HasFactory;
 
+    /** Mass assignable attributes */
+    protected $fillable = [
+        'movie_category_id',
+        'title',
+        'description',
+        'release_date',
+        'poster_url',
+        'price',
+    ];
+
     public function movieCategory()
     {
         return $this->belongsTo(MovieCategory::class);

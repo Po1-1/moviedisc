@@ -9,6 +9,11 @@ class MovieCategory extends Model
 {
     use HasFactory;
 
+    /** Mass assignable attributes */
+    protected $fillable = [
+        'name',
+    ];
+
     public function movies()
     {
         return $this->hasMany(Movie::class);
