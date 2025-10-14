@@ -39,10 +39,7 @@
         @endforelse
     </div>
 
-    {{-- Menampilkan link untuk Paginasi (halaman 1, 2, 3, dst.) --}}
-    <div class="mt-4">
-        {{ $movies->links() }}
-    </div>
+    {{-- Pagination dihilangkan — semua film kategori ditampilkan tanpa paginate --}}
 
     {{-- Tombol untuk kembali ke halaman daftar semua kategori --}}
     <a href="{{ route('movies.categories') }}" class="btn btn-secondary mt-4">← Back to All Categories</a>

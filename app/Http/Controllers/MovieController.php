@@ -11,7 +11,7 @@ class MovieController extends Controller
     // View 1: Menampilkan semua film (Homepage)
     public function index()
 {
-    $movies = Movie::latest()->paginate(12);
+    $movies = Movie::latest()->get();
     
     // PASTIKAN BARIS INI ADA DAN BENAR
     // Key-nya adalah 'movies' (plural)
@@ -52,7 +52,7 @@ public function categories()
 
 public function showByCategory(MovieCategory $category)
 {
-    $movies = $category->movies()->paginate(12);
+    $movies = $category->movies()->get();
 
     // PASTIKAN BARIS INI ADA DAN BENAR
     return view('movies.by_category', [
