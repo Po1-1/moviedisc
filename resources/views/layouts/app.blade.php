@@ -1,12 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Movie Disc')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/template.css') }}">
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@yield('title', 'Movie Disc')</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{{-- Link ke file tema utama kita --}}
+<link rel="stylesheet" href="{{ asset('css/template.css') }}">
+{{-- Hapus @yield('styles') karena style sudah terpusat --}}
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -26,10 +27,12 @@
         @yield('content')
     </main>
 
-    <footer class="text-center text-muted py-4 mt-4 bg-light">
+    {{-- Gunakan class footer yang baru --}}
+    <footer class="text-center py-4 mt-4 footer-dark">
         <p>Movie Disc &copy; {{ date('Y') }}</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

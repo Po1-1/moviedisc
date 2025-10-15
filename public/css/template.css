@@ -1,67 +1,126 @@
-/* Variabel warna untuk tema gelap */
+/* public/css/template.css */
+
+/* Variabel Warna Tema Hitam & Emas */
 :root {
-    --gunmetal: #2C3E50;      /* Warna latar belakang utama */
-    --shadow-blue: #7395AE;   /* Warna aksen untuk border dan teks */
-    --light-text: #E0E0E0;    /* Warna teks terang */
-    --bs-dark-rgb: 44, 62, 80; /* Override variabel Bootstrap untuk navbar */
+    --primary-dark: #141414;      /* Latar belakang utama, hitam pekat */
+    --secondary-dark: #1F1F1F;    /* Latar belakang untuk elemen seperti card, sedikit lebih terang */
+    --gold-accent: #D4AF37;       /* Warna Emas untuk aksen, link, dan border */
+    --gold-hover: #E6C35C;        /* Warna Emas yang lebih terang untuk hover */
+    --light-text: #EAEAEA;        /* Warna teks utama yang lembut */
+    --muted-text: #888888;        /* Warna untuk teks sekunder/muted */
+    --bs-dark-rgb: 20, 20, 20;    /* Override warna navbar Bootstrap */
 }
 
-/* Terapkan tema gelap ke seluruh body */
+/* Terapkan Tema ke Seluruh Halaman */
 body {
-    background-color: var(--gunmetal);
+    background-color: var(--primary-dark);
     color: var(--light-text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Sesuaikan warna link agar lebih terlihat */
+/* Styling Link */
 a {
-    color: var(--shadow-blue);
+    color: var(--gold-accent);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
-
 a:hover {
-    color: white;
+    color: var(--gold-hover);
 }
 
-/* Styling untuk card agar sesuai tema */
+/* Styling Card yang Konsisten */
 .card {
-    background-color: #34495E; /* Sedikit lebih terang dari body */
-    border-color: var(--shadow-blue);
+    background-color: var(--secondary-dark);
+    border: 1px solid var(--gold-accent);
     color: var(--light-text);
 }
-
 .card-title {
-    color: white;
-}
-
-.card-footer {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-top-color: var(--shadow-blue);
-}
-
-/* Styling untuk list group di halaman kategori */
-.list-group-item {
-    background-color: #34495E;
-    border-color: var(--shadow-blue);
     color: var(--light-text);
 }
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--gold-accent);
+}
 
+/* Tombol (Button) */
+.btn-primary {
+    background-color: var(--gold-accent);
+    border-color: var(--gold-accent);
+    color: var(--primary-dark); /* Teks gelap agar kontras dengan tombol emas */
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: var(--gold-hover);
+    border-color: var(--gold-hover);
+    color: var(--primary-dark);
+}
+.btn-outline-secondary {
+    border-color: var(--gold-accent);
+    color: var(--gold-accent);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--gold-accent);
+    color: var(--primary-dark);
+}
+
+
+/* List Group untuk Halaman Kategori */
+.list-group-item {
+    background-color: var(--secondary-dark);
+    border-color: var(--gold-accent);
+    color: var(--light-text);
+}
 .list-group-item-action:hover, .list-group-item-action:focus {
-    background-color: #4A6572;
+    background-color: var(--primary-dark);
+    color: var(--gold-hover);
+}
+
+/* Footer */
+.footer-dark {
+    background-color: var(--primary-dark);
+    color: var(--muted-text);
+    border-top: 1px solid var(--gold-accent);
+}
+
+/* Utility Classes Override */
+.text-muted {
+    color: var(--muted-text) !important;
+}
+.text-warning {
+    color: var(--gold-accent) !important; /* Bintang rating menjadi emas */
+}
+hr, .border-bottom {
+    border-color: var(--gold-accent) !important;
+}
+
+/* Styling untuk Hero Section di Halaman Utama */
+.hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.freepik.com/free-vector/3d-style-retro-film-strip-background-with-text-space_1017-52848.jpg?t=st=1760168318~exp=1760171918~hmac=b5cfff52f2fe4deb7b4647b7536cadcef40fa8a7ecf06bb956a25fc5bc1e4195');
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
-/* Ubah warna footer */
-.footer-dark {
-    background-color: #2C3E50;
-    color: var(--shadow-blue);
-    border-top: 1px solid var(--shadow-blue);
+/* Styling untuk gambar profil tim di halaman 'About' */
+.team-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border: 3px solid var(--gold-accent); /* Tambahkan border emas */
 }
 
-/* Ubah warna teks muted */
-.text-muted {
-    color: #95a5a6 !important;
+/* Styling untuk icon fitur di halaman home */
+.feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: .75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
-
-/* Ubah warna border */
-hr, .border-bottom {
-    border-color: var(--shadow-blue) !important;
+.feature-icon.bg-warning {
+    background-color: var(--gold-accent) !important;
+    color: var(--primary-dark);
 }
