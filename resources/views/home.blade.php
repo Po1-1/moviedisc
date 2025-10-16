@@ -9,8 +9,8 @@
         <p class="lead col-lg-8 mx-auto">Jelajahi katalog film yang tak terhingga, dari mahakarya klasik hingga rilisan
             terbaru. Movie Disc adalah rumah bagi para pencinta film.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
-            {{-- Tombol ini sekarang akan menggunakan style dari template.css --}}
-            <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4 gap-3">Lihat Koleksi</a>
+            {{-- Arahkan tombol ke halaman daftar film (movies.index) --}}
+            <a href="{{ route('movies.index') }}" class="btn btn-primary btn-lg px-4 gap-3">Lihat Koleksi</a>
             <a href="{{ route('about') }}" class="btn btn-outline-secondary btn-lg px-4">Tentang Kami</a>
         </div>
     </div>

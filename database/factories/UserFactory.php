@@ -23,11 +23,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-         return [
-            // 'movie_id' akan kita tentukan di Seeder
-            'user_name' => $this->faker->name(),
-            'rating' => $this->faker->numberBetween(1, 5), // Rating acak dari 1 sampai 5
-            'comment' => $this->faker->paragraph(2), // Komentar acak sepanjang 2 paragraf
+        return [
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => static::$password ??= Hash::make('password'),
+            'remember_token' => Str::random(10),
         ];
     }
 

@@ -34,8 +34,10 @@
             <p>{{ $movie->description }}</p>
             <hr>
             <div class="d-flex justify-content-between align-items-center">
-                <h3 class="text-success mb-0">Price: ${{ number_format($movie->price, 2) }}</h3>
-                <button type="button" class="btn btn-lg btn-success">Confirm Purchase</button>
+                {{-- Ubah format harga menjadi Rupiah --}}
+                <h3 class="text-warning mb-0">Rp {{ number_format($movie->price, 0, ',', '.') }}</h3>
+                {{-- Ganti class 'btn-success' menjadi 'btn-primary' agar sesuai tema --}}
+                <button type="button" class="btn btn-lg btn-primary">Confirm Purchase</button>
             </div>
         </div>
     </div>

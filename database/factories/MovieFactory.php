@@ -16,7 +16,7 @@ class MovieFactory extends Factory
      */
     public function definition(): array
     {
-         $imageUrl = 'https://picsum.photos/seed/' . $this->faker->unique()->word . '/400/600';
+        $imageUrl = 'https://picsum.photos/seed/' . $this->faker->unique()->word . '/400/600';
 
         return [
             'movie_category_id' => MovieCategory::factory(),
@@ -24,7 +24,7 @@ class MovieFactory extends Factory
             'description' => $this->faker->paragraph(4),
             'release_date' => $this->faker->date(),
             'poster_url' => $imageUrl, 
-            'price' => $this->faker->randomFloat(2, 5, 25),
+            'price' => $this->faker->numberBetween(5, 30) * 5000
         ];
     }
 }
