@@ -4,17 +4,17 @@
 
 @section('content')
     <div class="row">
-        {{-- KOLOM KIRI: POSTER --}}
+        {{-- poster --}}
         <div class="col-md-4">
             <img src="{{ $movie->poster_url }}" class="img-fluid rounded" alt="{{ $movie->title }}">
         </div>
 
-        {{-- KOLOM KANAN: DETAIL & PEMBELIAN --}}
+        {{-- detail --}}
         <div class="col-md-8">
             <h1>{{ $movie->title }}</h1>
             <p class="text-muted">Release Date: {{ \Carbon\Carbon::parse($movie->release_date)->format('d F Y') }}</p>
 
-            {{-- Tampilkan rata-rata rating jika ada review --}}
+            {{-- rerata rating --}}
             @if ($reviewCount > 0)
                 <div class="mb-3">
                     <span class="h4 text-warning">
@@ -34,15 +34,13 @@
             <p>{{ $movie->description }}</p>
             <hr>
             <div class="d-flex justify-content-between align-items-center">
-                {{-- Ubah format harga menjadi Rupiah --}}
                 <h3 class="text-warning mb-0">Rp {{ number_format($movie->price, 0, ',', '.') }}</h3>
-                {{-- Ganti class 'btn-success' menjadi 'btn-primary' agar sesuai tema --}}
                 <button type="button" class="btn btn-lg btn-primary">Confirm Purchase</button>
             </div>
         </div>
     </div>
 
-    {{-- BAGIAN BARU: DAFTAR REVIEW --}}
+    {{-- list review --}}
     <div class="row mt-5">
         <div class="col-12">
             <hr>

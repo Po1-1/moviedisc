@@ -3,19 +3,17 @@
 @section('title', 'Selamat Datang di Movie Disc')
 
 @section('content')
-    {{-- Konten hero section tetap sama, tapi sekarang akan mengikuti tema global --}}
+
     <div class="text-center p-5 mb-4 rounded-3 hero-section">
-        <h1 class="display-3 fw-bold">Welcome to Movie Disc!</h1>
+        <h1 class="display-3 fw-bold">Selamat Datang di Movie Disc!</h1>
         <p class="lead col-lg-8 mx-auto">Jelajahi katalog film yang tak terhingga, dari mahakarya klasik hingga rilisan
             terbaru. Movie Disc adalah rumah bagi para pencinta film.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
-            {{-- Arahkan tombol ke halaman daftar film (movies.index) --}}
             <a href="{{ route('movies.index') }}" class="btn btn-primary btn-lg px-4 gap-3">Lihat Koleksi</a>
             <a href="{{ route('about') }}" class="btn btn-outline-secondary btn-lg px-4">Tentang Kami</a>
         </div>
     </div>
 
-    {{-- Konten lainnya akan otomatis mengikuti tema --}}
     <div class="container px-4 py-5" id="features">
         <h2 class="pb-2 border-bottom text-center display-5 mb-5">Mengapa Movie Disc?</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">

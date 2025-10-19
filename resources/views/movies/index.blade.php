@@ -24,5 +24,4 @@
             <p class="text-center">No movies found.</p>
         @endforelse
     </div>
-
 @endsection

@@ -10,33 +10,31 @@ class Movie extends Model
 {
     use HasFactory;
 
-    /** Mass assignable attributes */
+    // yang bisa diisi user
     protected $fillable = [
         'movie_category_id',
         'title',
         'description',
         'release_date',
         'poster_url',
-        'price',
+        'price'
     ];
 
     public function movieCategory()
     {
+        //biar bisa dapet category filmnya
         return $this->belongsTo(MovieCategory::class);
     }
 
     public function userReviews()
     {
+        //biar dapet semua review film
         return $this->hasMany(UserReview::class);
     }
 
-    /**
-     * Menghasilkan URL gambar yang konsisten berdasarkan ID film.
-     */
     protected function posterUrl(): Attribute
     {
         return Attribute::make(
-            // Gunakan ID film sebagai 'seed' untuk gambar
             get: fn () => 'https://picsum.photos/seed/' . $this->id . '/400/600',
         );
     }

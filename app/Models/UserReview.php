@@ -9,7 +9,6 @@ class UserReview extends Model
 {
     use HasFactory;
 
-    /** Mass assignable attributes */
     protected $fillable = [
         'movie_id',
         'user_name',

@@ -1,24 +1,22 @@
-/* public/css/template.css */
-
-/* Variabel Warna Tema Hitam & Emas */
+/* Tema warna utama */
 :root {
-    --primary-dark: #141414;      /* Latar belakang utama, hitam pekat */
-    --secondary-dark: #1F1F1F;    /* Latar belakang untuk elemen seperti card, sedikit lebih terang */
-    --gold-accent: #D4AF37;       /* Warna Emas untuk aksen, link, dan border */
-    --gold-hover: #E6C35C;        /* Warna Emas yang lebih terang untuk hover */
-    --light-text: #EAEAEA;        /* Warna teks utama yang lembut */
-    --muted-text: #888888;        /* Warna untuk teks sekunder/muted */
-    --bs-dark-rgb: 20, 20, 20;    /* Override warna navbar Bootstrap */
+    --primary-dark: #141414;      
+    --secondary-dark: #1F1F1F;    
+    --gold-accent: #D4AF37;       
+    --gold-hover: #E6C35C;        
+    --light-text: #EAEAEA;        
+    --muted-text: #888888;        
+    --bs-dark-rgb: 20, 20, 20;    
 }
 
-/* Terapkan Tema ke Seluruh Halaman */
+/* apply ke semua halaman */
 body {
     background-color: var(--primary-dark);
     color: var(--light-text);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Styling Link */
+/* buat link */
 a {
     color: var(--gold-accent);
     text-decoration: none;
@@ -28,7 +26,7 @@ a:hover {
     color: var(--gold-hover);
 }
 
-/* Styling Card yang Konsisten */
+/* style card pusat */
 .card {
     background-color: var(--secondary-dark);
     border: 1px solid var(--gold-accent);
@@ -42,7 +40,7 @@ a:hover {
     border-top: 1px solid var(--gold-accent);
 }
 
-/* Tombol (Button) */
+/* untuk button */
 .btn-primary {
     background-color: var(--gold-accent);
     border-color: var(--gold-accent);
@@ -64,7 +62,7 @@ a:hover {
 }
 
 
-/* List Group untuk Halaman Kategori */
+/* List Group untuk Kategori */
 .list-group-item {
     background-color: var(--secondary-dark);
     border-color: var(--gold-accent);
@@ -87,7 +85,7 @@ a:hover {
     color: var(--muted-text) !important;
 }
 .text-warning {
-    color: var(--gold-accent) !important; /* Bintang rating menjadi emas */
+    color: var(--gold-accent) !important; 
 }
 hr, .border-bottom {
     border-color: var(--gold-accent) !important;
@@ -101,15 +99,15 @@ hr, .border-bottom {
     color: white;
 }
 
-/* Styling untuk gambar profil tim di halaman 'About' */
+/* Styling buat gambar profil */
 .team-img {
     width: 140px;
     height: 140px;
     object-fit: cover;
-    border: 3px solid var(--gold-accent); /* Tambahkan border emas */
+    border: 3px solid var(--gold-accent); 
 }
 
-/* Styling untuk icon fitur di halaman home */
+/* Styling icon fitur */
 .feature-icon {
     width: 4rem;
     height: 4rem;

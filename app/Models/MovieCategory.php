@@ -9,9 +9,8 @@ class MovieCategory extends Model
 {
     use HasFactory;
 
-    /** Mass assignable attributes */
     protected $fillable = [
-        'name',
+        'name'
     ];
 
     public function movies()

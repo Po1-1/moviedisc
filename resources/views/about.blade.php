@@ -4,9 +4,8 @@
 @section('content')
     <div class="about-header text-center mb-5">
         <div class="container">
-            <h1 class="display-4 fw-bold">Kisah di Balik Layar</h1>
-            <p class="fs-4 col-md-10 mx-auto text-muted">Movie Disc bukan sekadar database film. Kami adalah komunitas,
-                platform, dan surat cinta untuk dunia sinema.</p>
+            <h1 class="display-4 fw-bold">Mengapa ada Movie Disc?</h1>
+            <p class="fs-4 col-md-10 mx-auto text-muted">Movie Disc adalah sebuah web yang menyediakan film terbaik yang dapat membuat hari kalian menjadi lebih bermakna.</p>
         </div>
     </div>
 
@@ -39,7 +38,7 @@
 
     <div class="container px-4 py-5 text-center">
         <h2 class="display-5 pb-2 border-bottom">Tim di Balik Movie Disc</h2>
-        <p class="lead text-muted my-4">Kami adalah sekelompok individu yang bersemangat tentang teknologi dan film.</p>
+        <p class="lead text-muted my-4">Kami adalah sekelompok individu yang mencoba membuat web ini.</p>
         <div class="row g-4 justify-content-center">
             {{-- Member 1 --}}
             <div class="col-lg-3 col-md-6">
@@ -64,8 +63,7 @@
         <div class="card p-5 text-center">
             <div class="card-body">
                 <h2 class="fw-bold">Tertarik dengan Proyek Kami?</h2>
-                <p class="lead text-muted mb-4">Lihat bagaimana kami membangun semuanya dari awal. Jelajahi koleksi film
-                    yang menjadi inti dari aplikasi ini.</p>
+                <p class="lead text-muted mb-4">Jelajahi koleksi film yang menjadi inti dari aplikasi ini.</p>
                 <a href="{{ route('movies.index') }}" class="btn btn-primary btn-lg">Jelajahi Koleksi Film</a>
             </div>
         </div>
