@@ -30,7 +30,7 @@ class MovieController extends Controller
         $movie->load('userReviews');
         $reviewCount = $movie->userReviews->count();
         $averageRating = $reviewCount > 0 ? $movie->userReviews->avg('rating') : 0;
-
+        
         return view('movies.show', [
             'movie' => $movie,
             'reviewCount' => $reviewCount,
