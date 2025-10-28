@@ -24,4 +24,8 @@
             <p class="text-center">No movies found.</p>
         @endforelse
     </div>
+
+    <div class="mt-4">
+        {{ $movies->links() }}
+    </div>
 @endsection
