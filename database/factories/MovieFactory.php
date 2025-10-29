@@ -17,13 +17,13 @@ class MovieFactory extends Factory
     public function definition(): array
     {
         $imageUrl = 'https://picsum.photos/seed/' . $this->faker->unique()->word . '/400/600';
-        return [
-            'movie_category_id' => MovieCategory::factory(),
-            'title' => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph(4),
-            'release_date' => $this->faker->date(),
-            'poster_url' => $imageUrl, 
-            'price' => $this->faker->numberBetween(5, 30) * 5000
-        ];
+    return [
+        'movie_category_id' => MovieCategory::factory(),
+        'title' => $this->faker->sentence(3),
+        'description' => $this->faker->paragraph(4),
+        'release_date' => $this->faker->date(),
+        'poster_url' => $imageUrl, // URL gambar acak yang konsisten
+        'price' => $this->faker->numberBetween(50000, 250000)
+    ];
     }
 }

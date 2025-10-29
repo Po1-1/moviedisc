@@ -16,9 +16,12 @@ class UserReview extends Model
         'comment',
     ];
 
-    public function movie()
-    {
+    protected $guarded = []; // Izinkan mass assignment
+    public function movie() {
         return $this->belongsTo(Movie::class);
+    }
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 
 }

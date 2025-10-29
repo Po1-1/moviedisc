@@ -18,9 +18,9 @@ class UserReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_name' => $this->faker->name(),
-            'rating' => $this->faker->numberBetween(1, 5),
-            'comment' => $this->faker->paragraph(2)
-        ];
+        // 'movie_id' dan 'user_id' akan diisi oleh Seeder
+        'rating' => $this->faker->numberBetween(1, 5),
+        'comment' => $this->faker->paragraph(2)
+    ];
     }
 }

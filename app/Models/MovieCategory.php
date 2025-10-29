@@ -13,8 +13,7 @@ class MovieCategory extends Model
         'name'
     ];
 
-    public function movies()
-    {
+    public function movies() {
         return $this->hasMany(Movie::class);
     }
 }

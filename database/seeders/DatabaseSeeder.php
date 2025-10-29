@@ -16,18 +16,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Buat 8 kategori film
+        // 1. Buat 10 User biasa
+        $users = User::factory(10)->create();
+
+        // 2. Buat 1 User Admin (untuk login)
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'), // Password: password
+            'is_admin' => true,
+        ]);
+
+        // 3. Buat 8 Kategori
         $categories = MovieCategory::factory(8)->create();
 
-        // Buat 150 film dan kaitkan dengan kategori yang ada secara acak
+        // 4. Buat 150 Film
         $movies = Movie::factory(150)->recycle($categories)->create();
 
-        // Untuk setiap film, buat antara 0 hingga 8 review acak
+        // 5. Buat Review Acak untuk setiap film dari user biasa
         foreach ($movies as $movie) {
             UserReview::factory()
-                ->count(rand(0, 8)) // Jumlah review acak
+                ->count(rand(0, 8)) // 0-8 review per film
                 ->create([
-                    'movie_id' => $movie->id, // Tautkan review ke film ini
+                    'movie_id' => $movie->id,
+                    'user_id' => $users->random()->id, // Diambil dari 10 user biasa
                 ]);
         }
     }
