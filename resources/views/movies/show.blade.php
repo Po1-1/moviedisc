@@ -1,71 +1,47 @@
-@extends('layouts.app')
+<h2 class="mb-3">User Reviews</h2>
 
-@section('title', $movie->title)
-
-@section('content')
-    <div class="row">
-        {{-- poster --}}
-        <div class="col-md-4">
-            <img src="{{ $movie->poster_url }}" class="img-fluid rounded" alt="{{ $movie->title }}">
-        </div>
-
-        {{-- detail --}}
-        <div class="col-md-8">
-            <h1>{{ $movie->title }}</h1>
-            <p class="text-muted">Release Date: {{ \Carbon\Carbon::parse($movie->release_date)->format('d F Y') }}</p>
-
-            {{-- rerata rating --}}
-            @if ($reviewCount > 0)
-                <div class="mb-3">
-                    <span class="h4 text-warning">
-                        @for ($i = 1; $i <= 5; $i++)
-                            @if ($i <= round($averageRating))
-                                ★
-                            @else
-                                ☆
-                            @endif
-                        @endfor
-                    </span>
-                    <span class="ms-2 h5">{{ number_format($averageRating, 1) }} out of 5</span>
-                    <span class="text-muted">({{ $reviewCount }} reviews)</span>
-                </div>
-            @endif
-
-            <p>{{ $movie->description }}</p>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center">
-                <h3 class="text-warning mb-0">Rp {{ number_format($movie->price, 0, ',', '.') }}</h3>
-                <button type="button" class="btn btn-lg btn-primary">Confirm Purchase</button>
+@auth
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Add Your Review</h5>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
             </div>
-        </div>
+        @endif
+
+        <form action="{{ route('reviews.store', $movie->id) }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <select name="rating" id="rating" class="form-select" required>
+                    <option value="">Select a rating</option>
+                    <option value="5" {{ old('rating') == 5 ? 'selected' : '' }}>5 Stars</option>
+                    <option value="4" {{ old('rating') == 4 ? 'selected' : '' }}>4 Stars</option>
+                    <option value="3" {{ old('rating') == 3 ? 'selected' : '' }}>3 Stars</option>
+                    <option value="2" {{ old('rating') == 2 ? 'selected' : '' }}>2 Stars</option>
+                    <option value="1" {{ old('rating') == 1 ? 'selected' : '' }}>1 Star</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea name="comment" id="comment" rows="3" class="form-control" required>{{ old('comment') }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
     </div>
+</div>
+@endauth
 
-    {{-- list review --}}
-    <div class="row mt-5">
-        <div class="col-12">
-            <hr>
-            <h2 class="mb-3">User Reviews</h2>
+@guest
+<div class="alert alert-info">
+    You must be <a href="{{ route('login') }}">logged in</a> to add a review.
+</div>
+@endguest
 
-            @forelse ($movie->userReviews as $review)
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $review->user_name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-warning">
-                            @for ($i = 1; $i <= 5; $i++)
-                                {{ $i <= $review->rating ? '★' : '☆' }}
-                            @endfor
-                        </h6>
-                        <p class="card-text">{{ $review->comment }}</p>
-                        <p class="card-text"><small class="text-muted">Reviewed {{ $review->created_at->diffForHumans() }}</small></p>
-                    </div>
-                </div>
-            @empty
-                <div class="alert alert-info">
-                    There are no reviews for this movie yet.
-                </div>
-            @endforelse
-        </div>
-    </div>
-
-    <a href="{{ url()->previous() }}" class="btn btn-secondary mt-4">← Back</a>
-@endsection
+@forelse ($movie->userReviews as $review)
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ $review->user->name }}</h5>

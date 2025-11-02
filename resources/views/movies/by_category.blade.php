@@ -3,29 +3,25 @@
 @section('title', 'Movies in ' . $category->name)
 
 @section('content')
-    {{-- judul sesuaiin kategori yang dipilih --}}
+    {{-- Judul halaman yang dinamis sesuai nama kategori --}}
     <h1 class="mb-4">Category: <span class="text-primary">{{ $category->name }}</span></h1>
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
+        {{-- Gunakan @forelse untuk menangani kasus jika tidak ada film --}}
         @forelse ($movies as $movie)
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ $movie->poster_url }}" class="card-img-top" alt="{{ $movie->title }}">
+            
+            {{-- 
+              - PENGGUNAAN COMPONENT 
+              - Ini adalah perbaikan utamanya.
+              - Kita memanggil component 'movie-card' dan mengirimkan data '$movie'.
+              - Component ini (components/movie-card.blade.php) sudah
+              - memiliki logika yang benar untuk menampilkan gambar
+              - menggunakan '$movie->poster_display_url'.
+            --}}
+            <x-movie-card :movie="$movie" />
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $movie->title }}</h5>
-                        <p class="card-text text-muted">{{ \Illuminate\Support\Str::limit($movie->description, 50) }}</p>
-                    </div>
-
-                    <div class="card-footer">
-                        <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-primary w-100">
-                            View Details & Buy
-                        </a>
-                    </div>
-                </div>
-            </div>
         @empty
-            {{-- kalo gaada film di kategori ini --}}
+            {{-- Pesan ini akan muncul jika tidak ada film dalam kategori ini --}}
             <div class="col-12">
                 <div class="alert alert-warning text-center">
                     No movies found in this category yet.
@@ -34,6 +30,15 @@
         @endforelse
     </div>
 
-    {{-- Tombol back --}}
+    {{-- 
+      - Menampilkan link untuk Paginasi (halaman 1, 2, 3, dst.) 
+      - Ini hanya akan berfungsi jika di MovieCategoryController Anda
+      - menggunakan ->paginate(12) dan BUKAN ->get().
+    --}}
+    <div class="mt-4">
+        {{ $movies->links() }}
+    </div>
+
+    {{-- Tombol untuk kembali ke halaman daftar semua kategori --}}
     <a href="{{ route('movies.categories') }}" class="btn btn-secondary mt-4">← Back to All Categories</a>
 @endsection

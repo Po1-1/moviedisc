@@ -10,24 +10,33 @@ use Illuminate\Support\Facades\DB;
 class MovieController extends Controller
 {
     //untuk home
-    public function home()
-    {
-        return view('home');
+    // Halaman Home
+    public function home() {
+        return view('home'); // Anda sudah punya view 'home'
     }
 
-    //list film
-    public function index()
-    {
-        $movies = Movie::all();
+    // Halaman Daftar Semua Film (dengan SEARCH)
+    public function index(Request $request) {
+        $query = Movie::query()->latest(); // Ambil data terbaru
+
+        // Logika Searching
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'like', '%' . $search . '%')
+                  ->orWhere('description', 'like', '%' . $search . '%');
+        }
+
+        $movies = $query->paginate(12)->appends($request->query());
+
         return view('movies.index', ['movies' => $movies]);
     }
 
-    //untuk show detail
-    public function show($id) 
-    {
-        //cari pake ID
+    // Halaman Detail Film
+    public function show($id) {
         $movie = Movie::findOrFail($id);
-        $movie->load('userReviews');
+        // Load relasi user di dalam review
+        $movie->load('userReviews.user'); 
+
         $reviewCount = $movie->userReviews->count();
         $averageRating = $reviewCount > 0 ? $movie->userReviews->avg('rating') : 0;
         
@@ -38,28 +47,9 @@ class MovieController extends Controller
         ]);
     }
 
-    //buat list kategori
-    public function categories()
-    {
-        $categories = MovieCategory::all();
-        return view('movies.category', ['categories' => $categories]);
-    }
-
-    //nampilin film dari kategorinya
-    public function showByCategory($id)
-    {
-        //nyari kategori pake id
-        $category = MovieCategory::findOrFail($id);
-        $movies = $category->movies()->get();
-        return view('movies.by_category', [
-            'category' => $category,
-            'movies' => $movies,
-        ]);
-    }
-
-    //about us
-    public function about()
-    {
-        return view('about');
+    // Halaman About
+    public function about() {
+        return view('about'); // Anda sudah punya view 'about'
     }
 }
+
