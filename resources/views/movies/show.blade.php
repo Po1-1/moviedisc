@@ -45,3 +45,18 @@
     <div class="card mb-3">
         <div class="card-body">
             <h5 class="card-title">{{ $review->user->name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+                @for ($i = 0; $i < $review->rating; $i++)
+                    ★
+                @endfor
+                @for ($i = $review->rating; $i < 5; $i++)
+                    ☆
+                @endfor
+            </h6>
+            <p class="card-text">{{ $review->comment }}</p>
+            <p class="card-text"><small class="text-muted">Reviewed on {{ $review->created_at->format('F j, Y') }}</small></p>
+        </div>
+    </div>
+@empty
+    <p>No reviews yet. Be the first to review this movie!</p>
+@endforelse
