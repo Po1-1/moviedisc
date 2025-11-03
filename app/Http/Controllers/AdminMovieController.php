@@ -18,49 +18,79 @@ class AdminMovieController extends Controller
         return view('admin.movies.create', compact('categories'));
     }
 
-    public function store(Request $request) {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'release_date' => 'required|date',
-            'movie_category_id' => 'required|integer|exists:movie_categories,id',
-            'poster_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+    public function store(Request $request)
+{
+    // 1. Validasi (ini sudah benar)
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'release_date' => 'required|date',
+        'movie_category_id' => 'required|integer|exists:movie_categories,id',
+        'poster_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+    ]);
 
-        $path = $request->file('poster_image')->store('posters', 'public');
+    // 2. Simpan file gambar (ini sudah benar)
+    $path = $request->file('poster_image')->store('posters', 'public');
 
-        Movie::create($validated + ['poster_url' => $path]);
+    // --- PERBAIKAN DI SINI ---
+    
+    // 3. Siapkan data untuk disimpan
+    $dataToSave = $validated;
+    
+    // 4. Hapus key 'poster_image' karena tidak ada di database
+    unset($dataToSave['poster_image']); 
+    
+    // 5. Tambahkan key 'poster_url' dengan path yang benar
+    $dataToSave['poster_url'] = $path; 
 
-        return redirect()->route('admin.movies.index')->with('success', 'Movie created.');
-    }
+    // 6. Simpan data yang sudah bersih ke database
+    Movie::create($dataToSave);
+
+    return redirect()->route('admin.movies.index')->with('success', 'Movie created.');
+}
 
     public function edit(Movie $movie) {
         $categories = MovieCategory::all();
         return view('admin.movies.edit', compact('movie', 'categories'));
     }
 
-    public function update(Request $request, Movie $movie) {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'release_date' => 'required|date',
-            'movie_category_id' => 'required|integer|exists:movie_categories,id',
-            'poster_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        ]);
+    public function update(Request $request, Movie $movie)
+{
+    // 1. Validasi (ini sudah benar)
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'release_date' => 'required|date',
+        'movie_category_id' => 'required|integer|exists:movie_categories,id',
+        'poster_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+    ]);
 
-        $path = $movie->poster_url;
-        if ($request->hasFile('poster_image')) {
-            if ($movie->poster_url && !Str::startsWith($movie->poster_url, 'http')) {
-                Storage::disk('public')->delete($movie->poster_url);
-            }
-            $path = $request->file('poster_image')->store('posters', 'public');
+    // --- PERBAIKAN DI SINI ---
+    
+    // 2. Siapkan data untuk di-update
+    $dataToUpdate = $validated;
+
+    // 3. Hapus key 'poster_image'
+    unset($dataToUpdate['poster_image']);
+
+    // 4. Cek jika ada file gambar baru yang di-upload
+    if ($request->hasFile('poster_image')) {
+        // Hapus gambar lama (jika ada dan bukan dari seeder)
+        if ($movie->poster_url && !Str::startsWith($movie->poster_url, 'http')) {
+            Storage::disk('public')->delete($movie->poster_url);
         }
-
-        $movie->update($validated + ['poster_url' => $path]);
-        return redirect()->route('admin.movies.index')->with('success', 'Movie updated.');
+        
+        // Simpan gambar baru dan tambahkan path-nya ke data update
+        $dataToUpdate['poster_url'] = $request->file('poster_image')->store('posters', 'public');
     }
+
+    // 5. Update movie dengan data yang sudah bersih
+    $movie->update($dataToUpdate);
+    
+    return redirect()->route('admin.movies.index')->with('success', 'Movie updated.');
+}
 
     public function destroy(Movie $movie) {
         if ($movie->poster_url && !Str::startsWith($movie->poster_url, 'http')) {

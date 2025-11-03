@@ -7,13 +7,14 @@
     <div class="row g-5">
         {{-- Kolom Kiri: Poster Film --}}
         <div class="col-md-4">
-            <img src="{{ $movie->poster_url }}" class="img-fluid rounded shadow-lg" alt="Poster for {{ $movie->title }}">
+            {{-- INI ADALAH BARIS YANG DIPERBAIKI --}}
+            <img src="{{ $movie->poster_display_url }}" class="img-fluid rounded shadow-lg" alt="Poster for {{ $movie->title }}">
         </div>
 
         {{-- Kolom Kanan: Detail Film --}}
         <div class="col-md-8">
             <h1 class="display-5 fw-bold">{{ $movie->title }}</h1>
-            <p class="text-muted fs-5">{{ $movie->movieCategory->name }} | {{ \Carbon\Carbon::parse($movie->release_date)->format('F j, Y') }}</p>
+            <p class="text-white fs-5">{{ $movie->movieCategory->name }} | {{ \Carbon\Carbon::parse($movie->release_date)->format('F j, Y') }}</p>
 
             {{-- Tampilkan rating rata-rata jika ada --}}
             @if ($movie->userReviews->count() > 0)
@@ -32,7 +33,7 @@
                         @endfor
                     </span>
                     <span class="ms-2 fs-5">{{ number_format($averageRating, 1) }} dari 5</span>
-                    <span class="text-muted ms-2">({{ $reviewCount }} ulasan)</span>
+                    <span class="text-white ms-2">({{ $reviewCount }} ulasan)</span>
                 </div>
             @endif
 
@@ -102,11 +103,11 @@
                         </span>
                     </div>
                     <p class="card-text mt-2">{{ $review->comment }}</p>
-                    <p class="card-text mb-0"><small class="text-muted">Reviewed on {{ $review->created_at->format('F j, Y') }}</small></p>
+                    <p class="card-text mb-0"><small class="text-white">Reviewed on {{ $review->created_at->format('F j, Y') }}</small></p>
                 </div>
             </div>
         @empty
-            <p class="text-center text-muted">No reviews yet. Be the first to review this movie!</p>
+            <p class="text-center text-white">No reviews yet. Be the first to review this movie!</p>
         @endforelse
     </div>
 @endsection

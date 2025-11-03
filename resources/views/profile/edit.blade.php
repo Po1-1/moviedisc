@@ -1,36 +1,43 @@
-@extends('layouts.app')
-
-@section('title', 'Profile')
+@extends('layouts.app') @section('title', 'Profile')
 
 @section('content')
-    <h2 class="fw-bold mb-4">Profile Settings</h2>
+    <h1 class="mb-4">Profile</h1>
 
-    <div class="row g-4">
-        {{-- Kolom untuk Update Informasi Profil --}}
-        <div class="col-12">
-            <div class="card shadow-lg">
-                <div class="card-body p-4 p-md-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Profile Information</h5>
+                    <p class="mb-0 text-muted" style="font-size: 0.9em;">Update your account's profile information and email address.</p>
+                </div>
+                <div class="card-body">
+                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.update-profile-information-form')
                 </div>
             </div>
-        </div>
 
-        {{-- Kolom untuk Update Password --}}
-        <div class="col-12">
-            <div class="card shadow-lg">
-                <div class="card-body p-4 p-md-5">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Update Password</h5>
+                    <p class="mb-0 text-muted" style="font-size: 0.9em;">Ensure your account is using a long, random password to stay secure.</p>
+                </div>
+                <div class="card-body">
+                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
-        </div>
 
-        {{-- Kolom untuk Hapus Akun --}}
-        <div class="col-12">
-            <div class="card shadow-lg">
-                <div class="card-body p-4 p-md-5">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Delete Account</h5>
+                </div>
+                <div class="card-body">
+                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+            
         </div>
     </div>
 @endsection
