@@ -15,11 +15,7 @@ Route::get('/categories', [MovieCategoryController::class, 'categories'])->name(
 Route::get('/category/{id}', [MovieCategoryController::class, 'showByCategory'])->name('movies.by_category');
 Route::get('/about', [MovieController::class, 'about'])->name('about');
 
-/*
-|--------------------------------------------------------------------------
-| Rute Autentikasi (Breeze & Fitur User)
-|--------------------------------------------------------------------------
-*/
+
 Route::middleware('auth')->group(function () {
     // Halaman Profile (dari Breeze)
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

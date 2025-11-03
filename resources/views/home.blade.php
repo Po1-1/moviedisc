@@ -18,8 +18,8 @@
         <h2 class="pb-2 border-bottom text-center display-5 mb-5">Mengapa Movie Disc?</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
             <div class="col text-center">
-                <div class="feature-icon bg-warning">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
                         class="bi bi-collection-play" viewBox="0 0 16 16">
                         <path
                             d="M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1zm2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848l-4-2.5z" />
@@ -32,8 +32,8 @@
                     diperbarui.</p>
             </div>
             <div class="col text-center">
-                <div class="feature-icon bg-warning">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
@@ -43,8 +43,8 @@
                 <p>Dapatkan akses instan ke sinopsis, sutradara, tanggal rilis, dan ulasan untuk setiap film yang ada.</p>
             </div>
             <div class="col text-center">
-                <div class="feature-icon bg-warning">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
                         class="bi bi-heart-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />

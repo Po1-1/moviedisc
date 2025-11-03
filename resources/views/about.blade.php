@@ -5,7 +5,7 @@
     <div class="about-header text-center mb-5">
         <div class="container">
             <h1 class="display-4 fw-bold">Mengapa ada Movie Disc?</h1>
-            <p class="fs-4 col-md-10 mx-auto text-muted">Movie Disc adalah sebuah web yang menyediakan film terbaik yang dapat membuat hari kalian menjadi lebih bermakna.</p>
+            <p class="fs-4 col-md-10 mx-auto">Movie Disc adalah sebuah web yang menyediakan film terbaik yang dapat membuat hari kalian menjadi lebih bermakna.</p>
         </div>
     </div>
 
@@ -38,23 +38,24 @@
 
     <div class="container px-4 py-5 text-center">
         <h2 class="display-5 pb-2 border-bottom">Tim di Balik Movie Disc</h2>
-        <p class="lead text-muted my-4">Kami adalah sekelompok individu yang mencoba membuat web ini.</p>
+        <p class="lead my-4">Kami adalah sekelompok individu yang mencoba membuat web ini.</p>
         <div class="row g-4 justify-content-center">
             {{-- Member 1 --}}
             <div class="col-lg-3 col-md-6">
+                {{-- Class .team-img ini yang akan kita targetkan dengan CSS --}}
                 <img class="rounded-circle team-img mb-3"
                     src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1771&auto=format&fit=crop"
                     alt="Anggota Tim 1" />
-                <h4 class="fw-normal">John Doe</h4>
-                <p class="text-muted">Project Lead & Backend Developer</p>
+                <h4 class="fw-semibold">John Doe</h4>
+                <p>Project Lead & Backend Developer</p>
             </div>
             {{-- Member 2 --}}
             <div class="col-lg-3 col-md-6">
                 <img class="rounded-circle team-img mb-3"
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1770&auto=format&fit=crop"
                     alt="Anggota Tim 2" />
-                <h4 class="fw-normal">Jane Doe</h4>
-                <p class="text-muted">UI/UX Designer</p>
+                <h4 class="fw-semibold">Jane Doe</h4>
+                <p>UI/UX Designer</p>
             </div>
         </div>
     </div>

@@ -1,124 +1,198 @@
-/* Tema warna utama */
 :root {
-    --primary-dark: #141414;      
-    --secondary-dark: #1F1F1F;    
-    --gold-accent: #D4AF37;       
-    --gold-hover: #E6C35C;        
-    --light-text: #EAEAEA;        
-    --muted-text: #888888;        
-    --bs-dark-rgb: 20, 20, 20;    
+    --gold-color: #D4A017; 
+    --dark-bg: #121212;      
+    --component-bg: #1E1E1E; 
+    --text-light: #EAEAEA;   
+    --text-muted: #888;      
+    --border-color: #333;   
 }
 
-/* apply ke semua halaman */
 body {
-    background-color: var(--primary-dark);
-    color: var(--light-text);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* buat link */
-a {
-    color: var(--gold-accent);
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-a:hover {
-    color: var(--gold-hover);
-}
-
-/* style card pusat */
-.card {
-    background-color: var(--secondary-dark);
-    border: 1px solid var(--gold-accent);
-    color: var(--light-text);
-}
-.card-title {
-    color: var(--light-text);
-}
-.card-footer {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid var(--gold-accent);
-}
-
-/* untuk button */
 .btn-primary {
-    background-color: var(--gold-accent);
-    border-color: var(--gold-accent);
-    color: var(--primary-dark); /* Teks gelap agar kontras dengan tombol emas */
+    background-color: var(--gold-color);
+    border-color: var(--gold-color);
+    color: var(--dark-bg); 
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #E8C547; 
+    border-color: #E8C547;
+    color: var(--dark-bg);
+    box-shadow: 0 0 10px rgba(212, 160, 23, 0.5);
+}
+
+.card {
+    background-color: var(--component-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+.card-title {
+    color: var(--text-light);
+}
+
+.card-text.text-muted {
+    color: var(--text-muted) !important; 
+}
+
+
+.navbar-dark .navbar-brand {
+    color: var(--gold-color); 
     font-weight: bold;
 }
-.btn-primary:hover {
-    background-color: var(--gold-hover);
-    border-color: var(--gold-hover);
-    color: var(--primary-dark);
+
+.navbar-dark .nav-link {
+    transition: color 0.2s ease-in-out;
 }
-.btn-outline-secondary {
-    border-color: var(--gold-accent);
-    color: var(--gold-accent);
-}
-.btn-outline-secondary:hover {
-    background-color: var(--gold-accent);
-    color: var(--primary-dark);
+
+.navbar-dark .nav-link:hover, .navbar-dark .nav-link.active {
+    color: var(--gold-color);
 }
 
 
-/* List Group untuk Kategori */
-.list-group-item {
-    background-color: var(--secondary-dark);
-    border-color: var(--gold-accent);
-    color: var(--light-text);
-}
-.list-group-item-action:hover, .list-group-item-action:focus {
-    background-color: var(--primary-dark);
-    color: var(--gold-hover);
+.form-control, .form-select {
+    background-color: var(--component-bg);
+    border-color: var(--border-color);
+    color: var(--text-light);
 }
 
-/* Footer */
-.footer-dark {
-    background-color: var(--primary-dark);
-    color: var(--muted-text);
-    border-top: 1px solid var(--gold-accent);
+.form-control:focus, .form-select:focus {
+    background-color: var(--component-bg);
+    border-color: var(--gold-color);
+    color: var(--text-light);
+    box-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
 }
 
-/* Utility Classes Override */
-.text-muted {
-    color: var(--muted-text) !important;
+.form-control::placeholder {
+    color: var(--text-muted);
 }
+
+
+footer {
+    background-color: var(--component-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+
+hr {
+    border-top: 1px solid var(--border-color);
+}
+
 .text-warning {
-    color: var(--gold-accent) !important; 
-}
-hr, .border-bottom {
-    border-color: var(--gold-accent) !important;
+    color: var(--gold-color) !important;
 }
 
-/* Styling untuk Hero Section di Halaman Utama */
+a {
+    color: var(--gold-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #E8C547;
+}
+
+/* 3. Hero Section Styling (untuk home.blade.php) */
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.freepik.com/free-vector/3d-style-retro-film-strip-background-with-text-space_1017-52848.jpg?t=st=1760168318~exp=1760171918~hmac=b5cfff52f2fe4deb7b4647b7536cadcef40fa8a7ecf06bb956a25fc5bc1e4195');
+    position: relative;
+    padding: 8rem 1rem; 
+    margin: -2.5rem -0.75rem 0; 
+    
+    
+    background-image: linear-gradient(rgba(18, 18, 18, 0.6), rgba(18, 18, 18, 0.8)), url('https://img.freepik.com/free-vector/3d-style-retro-film-strip-background-with-text-space_1017-52848.jpg?t=st=1760168318~exp=1760171918~hmac=b5cfff52f2fe4deb7b4647b7536cadcef40fa8a7ecf06bb956a25fc5bc1e4195');
+    
     background-size: cover;
     background-position: center;
     color: white;
+    border-radius: 0 0 .5rem .5rem;
+    overflow: hidden;
+    text-align: center;
 }
 
-/* Styling buat gambar profil */
+/* Konten di dalam hero (judul, teks, tombol) */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Memastikan konten berada di atas lapisan overlay */
+}
+
+/* 5. List Group Styling (untuk Halaman Kategori) */
+.list-group-item {
+    background-color: var(--component-bg);
+    border-color: var(--border-color);
+    color: var(--text-light);
+    padding: 1rem 1.25rem;
+    transition: all 0.2s ease-in-out;
+    font-size: 1.1rem;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    background-color: #2a2a2a; 
+    color: var(--gold-color);
+    border-left: 4px solid var(--gold-color); 
+    transform: translateX(10px); 
+}
+
+/* 6. Team Image Styling (untuk Halaman About) */
 .team-img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border: 3px solid var(--gold-accent); 
+    width: 150px;     
+    height: 150px;     
+    object-fit: cover; 
+    object-position: center;
 }
 
-/* Styling icon fitur */
+/* 4. Features Section Styling */
 .feature-icon {
-    width: 4rem;
-    height: 4rem;
-    border-radius: .75rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    width: 5rem;  
+    height: 5rem; 
+    margin-bottom: 1.5rem;
+    background-color: var(--gold-color); 
+    color: var(--dark-bg); 
+    border-radius: 50%; 
 }
-.feature-icon.bg-warning {
-    background-color: var(--gold-accent) !important;
-    color: var(--primary-dark);
+
+/* 7. Pagination Styling */
+.pagination .page-link {
+    background-color: var(--component-bg);
+    color: var(--gold-color); /* Warna angka/teks pagination */
+    border: 1px solid var(--border-color);
+    margin: 0 2px; /* Memberi sedikit jarak antar tombol */
+    border-radius: .25rem;
+}
+
+/* State saat mouse diarahkan ke tombol pagination */
+.pagination .page-link:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: var(--gold-color);
+}
+
+/* State untuk halaman yang sedang aktif */
+.pagination .page-item.active .page-link {
+    background-color: var(--gold-color);
+    border-color: var(--gold-color);
+    color: var(--dark-bg); /* Warna teks menjadi gelap agar kontras dengan latar emas */
+    font-weight: bold;
+}
+
+/* State untuk tombol yang non-aktif (misal: "Previous" di halaman pertama) */
+.pagination .page-item.disabled .page-link {
+    background-color: var(--component-bg);
+    color: #6c757d; /* Warna abu-abu pudar */
+    border-color: var(--border-color);
+}
+
+/* 8. Utility Classes */
+.text-gold {
+    color: var(--gold-color);
 }
