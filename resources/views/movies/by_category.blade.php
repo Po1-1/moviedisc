@@ -3,7 +3,9 @@
 @section('title', 'Category: ' . $category->name)
 
 @section('content')
-    {{-- PERBAIKAN: Bungkus nama kategori dengan span dan class 'text-gold' --}}
+    {{-- PERBAIKAN AKURAT: Gunakan nama rute 'movies.categories' dari web.php --}}
+    <x-back-button :href="route('movies.categories')" text="All Categories" />
+
     <h1 class="mb-4">Category: <span class="text-gold">{{ $category->name }}</span></h1>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">

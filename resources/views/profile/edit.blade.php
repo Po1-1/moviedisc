@@ -1,7 +1,12 @@
-@extends('layouts.app') @section('title', 'Profile')
+@extends('layouts.app')
+
+@section('title', 'Profile')
 
 @section('content')
-    <h1 class="mb-4">Profile</h1>
+    {{-- TAMBAHKAN TOMBOL BACK DI SINI --}}
+    <x-back-button />
+
+    <h2 class="fw-bold mb-4">Profile Settings</h2>
 
     <div class="row">
         <div class="col-lg-8 mx-auto">

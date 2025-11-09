@@ -3,6 +3,15 @@
 @section('title', $movie->title)
 
 @section('content')
+    {{-- TAMBAHKAN TOMBOL BACK DI SINI --}}
+    <x-back-button />
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     {{-- Gunakan Grid Bootstrap untuk menata layout --}}
     <div class="row g-5">
         {{-- Kolom Kiri: Poster Film --}}
