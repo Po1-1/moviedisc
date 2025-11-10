@@ -16,8 +16,6 @@ class MovieCategoryFactory extends Factory
      */
     public function definition(): array
     {
-           return [
-        'name' => $this->faker->unique()->randomElement(['Action', 'Comedy', 'Horror', 'Sci-Fi', 'Drama', 'Thriller', 'Romance', 'Animation'])
-    ];
+        return ['name' => $this->faker->unique()->randomElement(['Action', 'Comedy', 'Horror', 'Sci-Fi', 'Drama', 'Thriller', 'Romance', 'Animation'])];
     }
 }
