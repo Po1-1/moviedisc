@@ -66,8 +66,6 @@ class AdminMovieController extends Controller
         'movie_category_id' => 'required|integer|exists:movie_categories,id',
         'poster_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
     ]);
-
-    // --- PERBAIKAN DI SINI ---
     
     // 2. Siapkan data untuk di-update
     $dataToUpdate = $validated;

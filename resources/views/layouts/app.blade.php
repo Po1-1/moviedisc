@@ -27,16 +27,25 @@
                 <ul class="navbar-nav ms-auto">
                     @auth
                         {{-- Tampilan untuk user yang sudah login --}}
-                        @if(Auth::user()->is_admin)
-                            <li class="nav-item">
-                                {{-- PERBAIKAN: Tambahkan kondisi untuk class 'active' --}}
-                                <a class="nav-link text-warning {{ request()->is('admin*') ? 'active' : '' }}" href="{{ route('admin.movies.index') }}">Admin Panel</a>
+                        @if (Auth::user()->is_admin)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" id="adminDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin Panel
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('admin.movies.index') }}">Manage Movies</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('admin.users.index') }}">Manage Users</a>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
 
                         <li class="nav-item">
                             {{-- Tambahkan juga kondisi 'active' untuk halaman profil --}}
-                            <a class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}" href="{{ route('profile.edit') }}">Profile</a>
+                            <a class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}"
+                                href="{{ route('profile.edit') }}">Profile</a>
                         </li>
                         <li class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">

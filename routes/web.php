@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MovieCategoryController;
 use App\Http\Controllers\UserReviewController;
@@ -72,4 +73,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // Rute CRUD lengkap untuk mengelola film
     Route::resource('movies', AdminMovieController::class);
+
+     // RUTE BARU: CRUD untuk mengelola user
+    Route::resource('users', AdminUserController::class)->except(['create', 'store', 'show']);
 });
