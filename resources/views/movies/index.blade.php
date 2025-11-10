@@ -19,9 +19,9 @@
         @empty
             <div class="col-12">
                 <div class="text-center p-5 rounded-3" style="background-color: var(--component-bg);">
-                    <h3 class="text-muted">No movies found.</h3>
+                    <h3>No movies found.</h3>
                     @if(request('search'))
-                        <p class="lead text-muted">We couldn't find any movies matching your search for "{{ request('search') }}".</p>
+                        <p class="lead">We couldn't find any movies matching your search for "{{ request('search') }}".</p>
                         <a href="{{ route('movies.index') }}" class="btn btn-outline-light mt-3">Clear Search</a>
                     @endif
                 </div>

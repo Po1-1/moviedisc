@@ -3,8 +3,8 @@
 @section('title', $movie->title)
 
 @section('content')
-    {{-- TAMBAHKAN TOMBOL BACK DI SINI --}}
-    <x-back-button />
+    {{-- PERBAIKAN: Kirimkan 'href' yang spesifik ke komponen agar selalu kembali ke halaman daftar film --}}
+    <x-back-button :href="route('movies.index')" text="Back to All Movies" />
 
     @if (session('success'))
         <div class="alert alert-success">
