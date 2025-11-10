@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        
-        return redirect(route('home'));
+        // PERBAIKAN: Arahkan ke 'dashboard' setelah registrasi.
+        return redirect(route('dashboard'));
     }
 }

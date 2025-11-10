@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    {{-- KODE HEADER/NAVBAR ANDA DIMULAI DI SINI --}}
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">🎬 Movie Disc</a>

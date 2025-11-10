@@ -1,34 +1,29 @@
-<x-guest-layout>
-    <h3 class="text-center fw-bold mb-3">Forgot Password</h3>
+@extends('layouts.guest')
 
-    <p class="text-center text-muted mb-4" style="font-size: 0.95em;">
-        No problem. Just let us know your email address and we will email you a password reset link.
-    </p>
+@section('title', 'Forgot Password')
 
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
-    
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            {{ $errors->first() }}
-        </div>
-    @endif
+@section('content')
+    <div class="mb-4 text-sm">
+        Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
+    </div>
+
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
 
-        <div class="mb-3">
+        <!-- Email Address -->
+        <div>
             <label for="email" class="form-label">Email</label>
-            <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus>
+            <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="d-grid">
+        <div class="d-grid gap-2 mt-4">
             <button type="submit" class="btn btn-primary">
                 Email Password Reset Link
             </button>
         </div>
     </form>
-</x-guest-layout>
+@endsection

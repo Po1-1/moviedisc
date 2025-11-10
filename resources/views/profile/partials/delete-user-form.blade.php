@@ -1,57 +1,65 @@
-<section class="space-y-6">
+<section>
     <header>
         <h2 class="h4 fw-bold">
             Delete Account
         </h2>
 
-        <p class="mt-1 text-muted">
-            Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+        <p class="mt-1">
+            Once your account is deleted, all of its resources and data will be permanently deleted.
         </p>
     </header>
 
-    <button 
-        type="button"
-        class="btn btn-danger"
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >Delete Account</button>
+    <!-- Tombol untuk memicu modal Bootstrap -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmUserDeletionModal">
+        Delete Account
+    </button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-4">
-            @csrf
-            @method('delete')
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="confirmUserDeletionModal" tabindex="-1" aria-labelledby="confirmUserDeletionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white">
+                <form method="post" action="{{ route('profile.destroy') }}">
+                    @csrf
+                    @method('delete')
 
-            <h2 class="h5 fw-bold text-dark">
-                Are you sure you want to delete your account?
-            </h2>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmUserDeletionModalLabel">Are you sure you want to delete your account?</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-            <p class="mt-1 text-muted">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
-            </p>
+                    <div class="modal-body">
+                        <p>Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.</p>
+                        <div class="mt-4">
+                            <label for="password_delete" class="form-label sr-only">Password</label>
+                            <input 
+                                id="password_delete" 
+                                name="password" 
+                                type="password" 
+                                class="form-control" 
+                                placeholder="Password" 
+                                required 
+                            />
+                            {{-- Menampilkan error validasi password --}}
+                            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                        </div>
+                    </div>
 
-            <div class="mt-4">
-                <label for="password" class="form-label sr-only">Password</label>
-
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    class="form-control"
-                    placeholder="Password"
-                />
-
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete Account</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="mt-4 d-flex justify-content-end">
-                <button type="button" class="btn btn-secondary me-2" x-on:click="$dispatch('close')">
-                    Cancel
-                </button>
-
-                <button type="submit" class="btn btn-danger">
-                    Delete Account
-                </button>
-            </div>
-        </form>
-    </x-modal>
+        </div>
+    </div>
 </section>
+
+{{-- Script untuk membuka kembali modal secara otomatis jika ada error validasi password --}}
+@if($errors->userDeletion->isNotEmpty())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var confirmUserDeletionModal = new bootstrap.Modal(document.getElementById('confirmUserDeletionModal'));
+            confirmUserDeletionModal.show();
+        });
+    </script>
+@endif

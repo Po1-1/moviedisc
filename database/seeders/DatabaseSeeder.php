@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('password'), // Password: password
+            // PERBAIKAN: Gunakan Hash::make() agar konsisten dengan Laravel
+            'password' => \Illuminate\Support\Facades\Hash::make('password'),
             'is_admin' => true,
         ]);
 

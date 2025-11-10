@@ -44,7 +44,7 @@ body {
 
 
 .navbar-dark .navbar-brand {
-    color: var(--gold-color); 
+    color: var(--gold-color); /* PERBAIKAN: Kembalikan warna brand menjadi emas */
     font-weight: bold;
 }
 

@@ -14,7 +14,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <h5 class="mb-0">Profile Information</h5>
-                    <p class="mb-0 text-muted" style="font-size: 0.9em;">Update your account's profile information and email address.</p>
+                    <p class="mb-0" style="font-size: 0.9em;">Update your account's profile information and email address.</p>
                 </div>
                 <div class="card-body">
                     {{-- Ini akan memuat form dari file partial --}}

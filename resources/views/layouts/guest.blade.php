@@ -5,32 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        {{-- PERUBAHAN 1: Menggunakan @yield untuk judul agar dinamis --}}
+        <title>@yield('title', config('app.name', 'Laravel'))</title>
 
+        <!-- Styles -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        {{-- PERUBAHAN 2: Menambahkan link ke CSS utama Anda untuk tema gelap --}}
+        <link rel="stylesheet" href="{{ asset('css/template.css') }}">
         
         <style>
+            /* PERUBAHAN 3: Memastikan background gelap untuk halaman tamu */
             body {
-                background-color: #f8f9fa;
-            }
-            .auth-card {
-                max-width: 460px;
-                width: 100%;
+                background-color: var(--dark-bg, #121212) !important;
             }
         </style>
     </head>
     <body class="d-flex align-items-center justify-content-center min-vh-100">
         
-        <div class="auth-card p-4">
+        <div class="col-md-6 col-lg-4">
             <div class="text-center mb-4">
-                <a href="/" class="navbar-brand fs-3 fw-bold">
-                    🎬 Movie Disc
+                <a href="/" class="text-decoration-none">
+                    <h1 class="fw-bold fs-1">🎬 Movie Disc</h1>
                 </a>
             </div>
 
-            <div class="card shadow-sm border-0">
-                <div class="card-body p-4 p-md-5">
-                    {{ $slot }}
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    {{-- PERUBAHAN 4: Mengganti {{ $slot }} dengan @yield('content') --}}
+                    @yield('content')
                 </div>
             </div>
         </div>
