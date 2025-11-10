@@ -30,7 +30,8 @@
     </div>
 
     @if($movies->hasPages())
-        <div class="mt-5 d-flex justify-content-center">
+        <div class="mt-5 d-flex justify-content-center align-items-center">
+            {{-- Link Paginasi --}}
             {{-- withQueryString() penting agar pencarian tidak hilang saat pindah halaman --}}
             {{ $movies->withQueryString()->links() }}
         </div>
