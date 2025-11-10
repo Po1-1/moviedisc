@@ -102,21 +102,39 @@
 
         {{-- Daftar ulasan yang sudah ada --}}
         @forelse ($movie->userReviews as $review)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title mb-0">{{ $review->user->name }}</h5>
-                        <span class="text-warning">
-                            @for ($i = 0; $i < $review->rating; $i++) ★ @endfor
-                            @for ($i = $review->rating; $i < 5; $i++) ☆ @endfor
-                        </span>
-                    </div>
-                    <p class="card-text mt-2">{{ $review->comment }}</p>
-                    <p class="card-text mb-0"><small class="text-white">Reviewed on {{ $review->created_at->format('F j, Y') }}</small></p>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h5 class="card-title mb-0">{{ $review->user->name }}</h5>
+                    <span class="text-warning">
+                        @for ($i = 0; $i < $review->rating; $i++) ★ @endfor
+                        @for ($i = $review->rating; $i < 5; $i++) ☆ @endfor
+                    </span>
                 </div>
+                
+                {{-- 
+                  - TOMBOL DELETE DITAMBAHKAN DI SINI
+                  - @auth ... @endauth : Memastikan user sudah login
+                  - @if(Auth::id() == $review->user_id) : Memastikan user adalah pemilik review
+                --}}
+                @auth
+                    @if(Auth::id() == $review->user_id)
+                        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    @endif
+                @endauth
+
             </div>
-        @empty
-            <p class="text-center text-white">No reviews yet. Be the first to review this movie!</p>
-        @endforelse
+            
+            <p class="card-text mt-2">{{ $review->comment }}</p>
+            <p class="card-text mb-0"><small class="text-muted">Reviewed on {{ $review->created_at->format('F j, Y') }}</small></p>
+        </div>
     </div>
+@empty
+    <p class="text-center text-muted">No reviews yet. Be the first to review this movie!</p>
+@endforelse
 @endsection

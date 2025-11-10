@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
 
     // Rute untuk Submit Review Film
     Route::post('/movie/{movie}/reviews', [UserReviewController::class, 'store'])->name('reviews.store');
+    // Rute untuk Menghapus Review
+    Route::delete('/reviews/{review}', [UserReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 // Ini memuat rute internal Breeze (login, register, logout, reset password, dll.)
