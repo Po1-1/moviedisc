@@ -20,7 +20,7 @@ class AdminMovieController extends Controller
 
     public function store(Request $request)
 {
-    // 1. Validasi (ini sudah benar)
+    // cek valid or no
     $validated = $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
@@ -30,19 +30,19 @@ class AdminMovieController extends Controller
         'poster_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
     ]);
 
-    // 2. Simpan file gambar (ini sudah benar)
+    // file gambar
     $path = $request->file('poster_image')->store('posters', 'public');
     
-    // 3. Siapkan data untuk disimpan
+    // Siapin data untuk disimpan
     $dataToSave = $validated;
     
-    // 4. Hapus key 'poster_image' karena tidak ada di database
+    // Hapus key 'poster_image' karena tidak ada di database
     unset($dataToSave['poster_image']); 
     
-    // 5. Tambahkan key 'poster_url' dengan path yang benar
+    // Tambahkan key 'poster_url' dengan path yang benar
     $dataToSave['poster_url'] = $path; 
 
-    // 6. Simpan data yang sudah bersih ke database
+    // Simpan data yang sudah bersih ke database
     Movie::create($dataToSave);
 
     return redirect()->route('admin.movies.index')->with('success', 'Movie created.');
@@ -55,7 +55,7 @@ class AdminMovieController extends Controller
 
     public function update(Request $request, Movie $movie)
 {
-    // 1. Validasi (ini sudah benar)
+    // cek valid or no
     $validated = $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
@@ -65,24 +65,23 @@ class AdminMovieController extends Controller
         'poster_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
     ]);
     
-    // 2. Siapkan data untuk di-update
+    // Siapin data untuk di-update
     $dataToUpdate = $validated;
 
-    // 3. Hapus key 'poster_image'
+    // Hapus key 'poster_image'
     unset($dataToUpdate['poster_image']);
 
-    // 4. Cek jika ada file gambar baru yang di-upload
+    // Cek jika ada file gambar baru yang di-upload
     if ($request->hasFile('poster_image')) {
         // Hapus gambar lama (jika ada dan bukan dari seeder)
         if ($movie->poster_url && !Str::startsWith($movie->poster_url, 'http')) {
             Storage::disk('public')->delete($movie->poster_url);
         }
-        
-        // Simpan gambar baru dan tambahkan path-nya ke data update
+        // Simpan gambar baru dan tambahin path-nya ke data update
         $dataToUpdate['poster_url'] = $request->file('poster_image')->store('posters', 'public');
     }
 
-    // 5. Update movie dengan data yang sudah bersih
+    // Update movie dengan data yang sudah bersih
     $movie->update($dataToUpdate);
     
     return redirect()->route('admin.movies.index')->with('success', 'Movie updated.');

@@ -22,7 +22,7 @@ class MovieController extends Controller
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where('title', 'like', '%' . $search . '%')
-                  ->orWhere('description', 'like', '%' . $search . '%');
+            ->orWhere('description', 'like', '%' . $search . '%');
         }
         // Paginate
         $movies = $query->paginate(12)->appends($request->query());
@@ -33,7 +33,7 @@ class MovieController extends Controller
     // Halaman Detail Film
     public function show($id) {
         $movie = Movie::findOrFail($id);
-        // Load relasi user di dalam review
+        // relasi user di dalam review
         $movie->load('userReviews.user'); 
 
         $reviewCount = $movie->userReviews->count();

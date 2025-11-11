@@ -24,7 +24,7 @@ class AdminUserController extends Controller
     /**
      * Menampilkan form untuk mengedit user.
      */
-    public function edit(User $user) // Menggunakan Route Model Binding
+    public function edit(User $user) 
     {
         return view('admin.users.edit', compact('user'));
     }
@@ -34,7 +34,7 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // 1. Validasi
+        // cek valid or no
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', \Illuminate\Validation\Rule::unique('users')->ignore($user->id)],

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use App\Providers\RouteServiceProvider; // Pastikan ini ada
+use App\Providers\RouteServiceProvider; 
 
 class RegisteredUserController extends Controller
 {
@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // KEMBALIKAN: Arahkan ke 'home' setelah registrasi.
+        // Arahkan ke 'home' setelah registrasi.
         return redirect(route('home'));
     }
 }
