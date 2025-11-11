@@ -5,16 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        {{-- PERUBAHAN 1: Menggunakan @yield untuk judul agar dinamis --}}
         <title>@yield('title', config('app.name', 'Laravel'))</title>
 
         <!-- Styles -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        {{-- PERUBAHAN 2: Menambahkan link ke CSS utama Anda untuk tema gelap --}}
         <link rel="stylesheet" href="{{ asset('css/template.css') }}">
         
         <style>
-            /* PERUBAHAN 3: Memastikan background gelap untuk halaman tamu */
             body {
                 background-color: var(--dark-bg, #121212) !important;
             }
@@ -31,7 +28,6 @@
 
             <div class="card shadow-lg">
                 <div class="card-body p-5">
-                    {{-- PERUBAHAN 4: Mengganti {{ $slot }} dengan @yield('content') --}}
                     @yield('content')
                 </div>
             </div>

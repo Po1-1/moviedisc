@@ -42,7 +42,6 @@
         <div class="row g-4 justify-content-center">
             {{-- Member 1 --}}
             <div class="col-lg-3 col-md-6">
-                {{-- Class .team-img ini yang akan kita targetkan dengan CSS --}}
                 <img class="rounded-circle team-img mb-3"
                     src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1771&auto=format&fit=crop"
                     alt="Anggota Tim 1" />

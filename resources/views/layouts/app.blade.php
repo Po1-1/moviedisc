@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {{-- KODE HEADER/NAVBAR ANDA DIMULAI DI SINI --}}
+    {{-- Header & Navbar  --}}
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">🎬 Movie Disc</a>
@@ -44,7 +44,6 @@
                         @endif
 
                         <li class="nav-item">
-                            {{-- Tambahkan juga kondisi 'active' untuk halaman profil --}}
                             <a class="nav-link {{ request()->routeIs('profile.edit') ? 'active' : '' }}"
                                 href="{{ route('profile.edit') }}">Profile</a>
                         </li>

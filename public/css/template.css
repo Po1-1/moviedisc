@@ -44,7 +44,7 @@ body {
 
 
 .navbar-dark .navbar-brand {
-    color: var(--gold-color); /* PERBAIKAN: Kembalikan warna brand menjadi emas */
+    color: var(--gold-color);
     font-weight: bold;
 }
 
@@ -99,7 +99,6 @@ a:hover {
     color: #E8C547;
 }
 
-/* 3. Hero Section Styling (untuk home.blade.php) */
 .hero-section {
     position: relative;
     padding: 8rem 1rem; 
@@ -116,13 +115,11 @@ a:hover {
     text-align: center;
 }
 
-/* Konten di dalam hero (judul, teks, tombol) */
 .hero-content {
     position: relative;
-    z-index: 2; /* Memastikan konten berada di atas lapisan overlay */
+    z-index: 2;
 }
 
-/* 5. List Group Styling (untuk Halaman Kategori) */
 .list-group-item {
     background-color: var(--component-bg);
     border-color: var(--border-color);
@@ -140,7 +137,6 @@ a:hover {
     transform: translateX(10px); 
 }
 
-/* 6. Team Image Styling (untuk Halaman About) */
 .team-img {
     width: 150px;     
     height: 150px;     
@@ -148,7 +144,6 @@ a:hover {
     object-position: center;
 }
 
-/* 4. Features Section Styling */
 .feature-icon {
     display: inline-flex;
     align-items: center;
@@ -161,60 +156,49 @@ a:hover {
     border-radius: 50%; 
 }
 
-/* 7. Pagination Styling */
 .pagination .page-link {
     background-color: var(--component-bg);
-    color: var(--gold-color); /* Warna angka/teks pagination */
+    color: var(--gold-color); 
     border: 1px solid var(--border-color);
-    margin: 0 2px; /* Memberi sedikit jarak antar tombol */
+    margin: 0 2px;
     border-radius: .25rem;
 }
 
-/* State saat mouse diarahkan ke tombol pagination */
 .pagination .page-link:hover {
     background-color: #2a2a2a;
     color: #fff;
     border-color: var(--gold-color);
 }
 
-/* State untuk halaman yang sedang aktif */
 .pagination .page-item.active .page-link {
     background-color: var(--gold-color);
     border-color: var(--gold-color);
-    color: var(--dark-bg); /* Warna teks menjadi gelap agar kontras dengan latar emas */
+    color: var(--dark-bg);
     font-weight: bold;
 }
 
-/* State untuk tombol yang non-aktif (misal: "Previous" di halaman pertama) */
 .pagination .page-item.disabled .page-link {
     background-color: var(--component-bg);
-    color: #6c757d; /* Warna abu-abu pudar */
+    color: #6c757d;
     border-color: var(--border-color);
 }
 
-/* 8. Utility Classes */
 .text-gold {
     color: var(--gold-color);
 }
 
 .link-blue:hover {
-    color: #0a58ca !important; /* Warna biru yang sedikit lebih gelap saat hover */
+    color: #0a58ca !important; 
 }
 
-/* =============================================== */
-/* STYLING BARU (VERSI PERBAIKAN): Tabel Admin Tema Gelap */
-/* =============================================== */
-
-/* Mengatur warna dasar tabel dan semua sel di dalamnya */
 .table {
-    --bs-table-bg: var(--dark-bg); /* Latar belakang dasar tabel menjadi hitam */
-    --bs-table-color: var(--text-light); /* Warna teks dasar menjadi putih */
-    --bs-table-border-color: #343a40; /* Warna border */
-    --bs-table-hover-bg: #2c2c2c; /* Warna latar saat hover */
-    --bs-table-hover-color: var(--text-light); /* Warna teks saat hover */
+    --bs-table-bg: var(--dark-bg); 
+    --bs-table-color: var(--text-light); 
+    --bs-table-border-color: #343a40;
+    --bs-table-hover-bg: #2c2c2c;
+    --bs-table-hover-color: var(--text-light);
 }
 
-/* Mengatur header tabel */
 .table thead th {
     color: var(--gold-color);
     background-color: #212529;
@@ -223,17 +207,15 @@ a:hover {
     letter-spacing: 0.5px;
 }
 
-/* Mengatur warna baris ganjil-genap (striped) secara paksa */
 .table-striped > tbody > tr:nth-of-type(odd) > * {
-    --bs-table-accent-bg: #212529; /* Latar belakang baris ganjil sedikit berbeda */
+    --bs-table-accent-bg: #212529; 
     color: var(--text-light);
 }
 .table-striped > tbody > tr:nth-of-type(even) > * {
-    --bs-table-accent-bg: var(--dark-bg); /* Latar belakang baris genap sama dengan dasar */
+    --bs-table-accent-bg: var(--dark-bg); 
     color: var(--text-light);
 }
 
-/* Mengatur warna tombol "Edit" */
 .btn-warning {
     background-color: var(--gold-color);
     border-color: var(--gold-color);
@@ -246,7 +228,6 @@ a:hover {
     color: var(--dark-bg);
 }
 
-/* Mengatur warna tombol "Delete" */
 .btn-danger {
     font-weight: bold;
 }

@@ -8,12 +8,7 @@ use App\Http\Controllers\MovieCategoryController;
 use App\Http\Controllers\UserReviewController;
 use App\Http\Controllers\AdminMovieController;
 
-/*
-|--------------------------------------------------------------------------
-| Rute Publik
-| Halaman ini dapat diakses oleh semua orang (tamu & user).
-|--------------------------------------------------------------------------
-*/
+/* Public */
 
 // Halaman Home
 Route::get('/', [MovieController::class, 'home'])->name('home');
@@ -34,12 +29,7 @@ Route::get('/category/{id}', [MovieCategoryController::class, 'showByCategory'])
 Route::get('/about', [MovieController::class, 'about'])->name('about');
 
 
-/*
-|--------------------------------------------------------------------------
-| Rute Autentikasi Pengguna
-| Halaman ini HANYA dapat diakses oleh user yang sudah login.
-|--------------------------------------------------------------------------
-*/
+/* Rute Autentikasi Pengguna */
 Route::middleware('auth')->group(function () {
     
     // Halaman Dashboard (yang dicari Breeze setelah login)
@@ -52,30 +42,25 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Rute untuk Submit Review Film
+    // Submit Review Film
     Route::post('/movie/{movie}/reviews', [UserReviewController::class, 'store'])->name('reviews.store');
-    // Rute untuk Menghapus Review
+    // Menghapus Review
     Route::delete('/reviews/{review}', [UserReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
-// Ini memuat rute internal Breeze (login, register, logout, reset password, dll.)
+// internal Breeze (login, register, logout, reset password, dll.)
 require __DIR__.'/auth.php';
 
 
-/*
-|--------------------------------------------------------------------------
-| Rute Panel Admin
-| Halaman ini HANYA dapat diakses oleh user yang login DAN is_admin.
-|--------------------------------------------------------------------------
-*/
+/* Admin */
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     
     // Arahkan dashboard admin ke daftar film
     Route::get('/dashboard', [AdminMovieController::class, 'index'])->name('dashboard');
     
-    // Rute CRUD lengkap untuk mengelola film
+    // CRUD lengkap untuk mengelola film
     Route::resource('movies', AdminMovieController::class);
 
-     // RUTE BARU: CRUD untuk mengelola user
+     // CRUD untuk mengelola user
     Route::resource('users', AdminUserController::class)->except(['create', 'store', 'show']);
 });

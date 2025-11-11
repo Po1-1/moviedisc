@@ -3,7 +3,6 @@
 @section('title', 'Category: ' . $category->name)
 
 @section('content')
-    {{-- PERBAIKAN AKURAT: Gunakan nama rute 'movies.categories' dari web.php --}}
     <x-back-button :href="route('movies.categories')" text="All Categories" />
 
     <h1 class="mb-4">Category: <span class="text-gold">{{ $category->name }}</span></h1>
@@ -20,7 +19,6 @@
 
     @if($movies->hasPages())
         <div class="mt-5 d-flex justify-content-center">
-            {{-- Tautkan pagination dengan query string yang ada (jika ada) --}}
             {{ $movies->withQueryString()->links() }}
         </div>
     @endif

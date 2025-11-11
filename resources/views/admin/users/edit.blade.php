@@ -32,7 +32,7 @@
                     <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
                 </div>
 
-                {{-- Mengubah Level Akun --}}
+                {{-- Mengubah Role Akun --}}
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="is_admin" name="is_admin" value="1" 
                         {{ old('is_admin', $user->is_admin) ? 'checked' : '' }}>

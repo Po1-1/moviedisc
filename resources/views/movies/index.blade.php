@@ -5,7 +5,6 @@
         <h1 class="mb-0">Our Movie Collection</h1>
     </div>
 
-    {{-- PERBAIKAN: Tambahkan input group untuk form pencarian --}}
     <form action="{{ route('movies.index') }}" method="GET" class="mb-5">
         <div class="input-group input-group-lg">
             <input type="text" name="search" class="form-control" placeholder="Search for a movie by title..." value="{{ request('search') }}">
@@ -32,7 +31,6 @@
     @if($movies->hasPages())
         <div class="mt-5 d-flex justify-content-center align-items-center">
             {{-- Link Paginasi --}}
-            {{-- withQueryString() penting agar pencarian tidak hilang saat pindah halaman --}}
             {{ $movies->withQueryString()->links() }}
         </div>
     @endif

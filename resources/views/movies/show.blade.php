@@ -3,7 +3,6 @@
 @section('title', $movie->title)
 
 @section('content')
-    {{-- PERBAIKAN: Kirimkan 'href' yang spesifik ke komponen agar selalu kembali ke halaman daftar film --}}
     <x-back-button :href="route('movies.index')" text="Back to All Movies" />
 
     @if (session('success'))
@@ -12,22 +11,17 @@
         </div>
     @endif
 
-    {{-- Gunakan Grid Bootstrap untuk menata layout --}}
     <div class="row g-5">
-        {{-- Kolom Kiri: Poster Film --}}
         <div class="col-md-4">
-            {{-- INI ADALAH BARIS YANG DIPERBAIKI --}}
             <img src="{{ $movie->poster_display_url }}" class="img-fluid rounded shadow-lg"
                 alt="Poster for {{ $movie->title }}">
         </div>
 
-        {{-- Kolom Kanan: Detail Film --}}
         <div class="col-md-8">
             <h1 class="display-5 fw-bold">{{ $movie->title }}</h1>
             <p class="text-white fs-5">{{ $movie->movieCategory->name }} |
                 {{ \Carbon\Carbon::parse($movie->release_date)->format('F j, Y') }}</p>
 
-            {{-- Tampilkan rating rata-rata jika ada --}}
             @if ($movie->userReviews->count() > 0)
                 @php
                     $averageRating = $movie->userReviews->avg('rating');
@@ -60,7 +54,6 @@
     {{-- Bagian Ulasan Pengguna --}}
     <div class="mt-5 pt-4 border-top">
         <h2 class="mb-4 fw-bold">User Reviews</h2>
-
         {{-- Form untuk menambah ulasan (hanya untuk user yang login) --}}
         @auth
             <div class="card mb-4">
@@ -103,7 +96,7 @@
             </div>
         @endguest
 
-        {{-- Daftar ulasan yang sudah ada --}}
+        {{-- Daftar review yang sudah ada --}}
         @forelse ($movie->userReviews as $review)
             <div class="card mb-3">
                 <div class="card-body">
@@ -120,11 +113,6 @@
                             </span>
                         </div>
 
-                    {{-- 
-                - TOMBOL DELETE DITAMBAHKAN DI SINI
-                - @auth ... @endauth : Memastikan user sudah login
-                - @if (Auth::id() == $review->user_id) : Memastikan user adalah pemilik review
-                --}}
                         @auth
                             @if (Auth::id() == $review->user_id)
                                 <form action="{{ route('reviews.destroy', $review->id) }}" method="POST"

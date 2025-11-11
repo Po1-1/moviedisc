@@ -3,7 +3,6 @@
 @section('title', 'Profile')
 
 @section('content')
-    {{-- TAMBAHKAN TOMBOL BACK DI SINI --}}
     <x-back-button />
 
     <h2 class="fw-bold mb-4">Profile Settings</h2>
@@ -17,7 +16,6 @@
                     <p class="mb-0" style="font-size: 0.9em;">Update your account's profile information and email address.</p>
                 </div>
                 <div class="card-body">
-                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.update-profile-information-form')
                 </div>
             </div>
@@ -28,7 +26,6 @@
                     <p class="mb-0 text-muted" style="font-size: 0.9em;">Ensure your account is using a long, random password to stay secure.</p>
                 </div>
                 <div class="card-body">
-                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
@@ -38,7 +35,6 @@
                     <h5 class="mb-0">Delete Account</h5>
                 </div>
                 <div class="card-body">
-                    {{-- Ini akan memuat form dari file partial --}}
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
