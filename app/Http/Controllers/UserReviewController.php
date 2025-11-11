@@ -16,11 +16,11 @@ class UserReviewController extends Controller
             'comment' => 'required|string|min:10',
         ]);
 
-        // Simpan review (pastikan user belum pernah review film ini)
+        // Simpan review
         UserReview::updateOrCreate(
             [
                 'movie_id' => $movie->id,
-                'user_id' => Auth::id(), // Ambil ID user yang sedang login
+                'user_id' => Auth::id(),
             ],
             [
                 'rating' => $validated['rating'],
