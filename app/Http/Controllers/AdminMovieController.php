@@ -95,3 +95,4 @@ class AdminMovieController extends Controller
         return redirect()->route('admin.movies.index')->with('success', 'Movie deleted.');
     }
 }
+// tes
