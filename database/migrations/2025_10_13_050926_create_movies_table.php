@@ -13,8 +13,8 @@ return new class extends Migration {
         $table->string('title');
         $table->text('description');
         $table->date('release_date');
-        $table->string('poster_url'); // Akan diisi oleh seeder (URL) atau admin (path file)
-        $table->decimal('price', 10, 2); // Sesuaikan dengan harga (misal: Rupiah)
+        $table->string('poster_url'); 
+        $table->decimal('price', 10, 2); 
         $table->timestamps();
     });
 }

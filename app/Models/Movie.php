@@ -22,20 +22,20 @@ class Movie extends Model
         return $this->hasMany(UserReview::class);
     }
 
-    // ACCESSOR PINTAR: Untuk menampilkan gambar
+    // menampilkan gambar
     public function getPosterDisplayUrlAttribute()
     {
-        // 1. Cek jika URL adalah eksternal (dari seeder Picsum)
+        // cek URL adalah eksternal 
         if (Str::startsWith($this->poster_url, ['http', 'https'])) {
             return $this->poster_url;
         }
 
-        // 2. Cek jika file ada di storage (dari upload admin)
+        // dari upload admin (cek di storage)
         if ($this->poster_url && Storage::disk('public')->exists($this->poster_url)) {
             return Storage::url($this->poster_url);
         }
 
-        // 3. Gambar default jika tidak ada
+        // Gambar kosong
         return 'https://via.placeholder.com/400x600.png?text=No+Image';
     }
 }

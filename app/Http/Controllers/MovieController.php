@@ -10,22 +10,21 @@ use Illuminate\Support\Facades\DB;
 class MovieController extends Controller
 {
     //untuk home
-    // Halaman Home
     public function home() {
-        return view('home'); // Anda sudah punya view 'home'
+        return view('home'); 
     }
 
     // Halaman Daftar Semua Film (dengan SEARCH)
     public function index(Request $request) {
-        $query = Movie::query()->latest(); // Ambil data terbaru
+        $query = Movie::query()->latest(); 
 
-        // Logika Searching
+        // searching
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where('title', 'like', '%' . $search . '%')
                   ->orWhere('description', 'like', '%' . $search . '%');
         }
-
+        // Paginate
         $movies = $query->paginate(12)->appends($request->query());
 
         return view('movies.index', ['movies' => $movies]);
@@ -47,9 +46,9 @@ class MovieController extends Controller
         ]);
     }
 
-    // Halaman About
+    // About
     public function about() {
-        return view('about'); // Anda sudah punya view 'about'
+        return view('about'); 
     }
 }
 

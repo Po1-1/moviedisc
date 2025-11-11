@@ -32,8 +32,6 @@ class AdminMovieController extends Controller
 
     // 2. Simpan file gambar (ini sudah benar)
     $path = $request->file('poster_image')->store('posters', 'public');
-
-    // --- PERBAIKAN DI SINI ---
     
     // 3. Siapkan data untuk disimpan
     $dataToSave = $validated;

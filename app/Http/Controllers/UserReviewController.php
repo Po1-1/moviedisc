@@ -33,17 +33,15 @@ class UserReviewController extends Controller
     }
     public function destroy(UserReview $review) 
     {
-        // 1. Otorisasi: Pastikan user yang login adalah pemilik review
-        // Ini adalah langkah keamanan yang SANGAT PENTING
+        //cek akun
         if (Auth::id() !== $review->user_id) {
-            // Jika bukan pemilik, kembalikan dengan error
             return back()->with('error', 'You are not authorized to delete this review.');
         }
 
-        // 2. Hapus review
+        // Hapus review
         $review->delete();
 
-        // 3. Kembali ke halaman film
+        // tombok back
         return back()->with('success', 'Your review has been deleted.');
     }
 }

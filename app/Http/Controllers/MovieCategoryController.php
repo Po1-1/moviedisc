@@ -9,7 +9,7 @@ class MovieCategoryController extends Controller
     // Halaman Daftar Kategori
     public function categories() {
         $categories = MovieCategory::all();
-        return view('movies.category', ['categories' => $categories]); // Anda sudah punya view 'category'
+        return view('movies.category', ['categories' => $categories]);
     }
 
     // Halaman Daftar Film per Kategori
@@ -19,7 +19,7 @@ class MovieCategoryController extends Controller
         return view('movies.by_category', [
             'category' => $category,
             'movies' => $movies,
-        ]); // Anda sudah punya view 'by_category'
+        ]);
     }
 }
 

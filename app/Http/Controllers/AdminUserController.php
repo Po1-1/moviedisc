@@ -41,20 +41,18 @@ class AdminUserController extends Controller
             'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // 2. Update Nama & Email
+        // Update Nama & Email
         $user->name = $request->name;
         $user->email = $request->email;
 
-        // 3. Update Level Akun (Role)
-        // Checkbox 'is_admin' akan mengirimkan '1' jika dicentang, dan tidak mengirimkan apa-apa jika tidak.
+        // update Level akun admin(Role)
         $user->is_admin = $request->has('is_admin');
-
-        // 4. Update Password (HANYA JIKA DIISI)
+        // update Password
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
 
-        // 5. Simpan perubahan
+        // save perubahan
         $user->save();
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
@@ -65,7 +63,7 @@ class AdminUserController extends Controller
      */
     public function destroy(User $user)
     {
-        // Keamanan: Pastikan admin tidak menghapus akunnya sendiri
+        // tidak delete akun sendiri
         if ($user->id == Auth::id()) {
             return back()->with('error', 'You cannot delete your own account.');
         }

@@ -10,8 +10,8 @@ return new class extends Migration {
     Schema::create('user_reviews', function (Blueprint $table) {
         $table->id();
         $table->foreignId('movie_id')->constrained()->onDelete('cascade');
-        $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Terhubung ke user login
-        $table->unsignedTinyInteger('rating'); // Rating 1-5
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        $table->unsignedTinyInteger('rating');
         $table->text('comment');
         $table->timestamps();
     });
